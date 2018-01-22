@@ -1,67 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Reset Password</div>
 
-
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Reset Password
-                </h1>
-            </div>
-        </div>
-    </section>
-
-    <div class="columns is-marginless is-centered">
-        <div class="column is-5">
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title">Reset Password</p>
-                </header>
-
-                <div class="card-content">
+                <div class="panel-body">
                     @if (session('status'))
-                        <div class="notification">
+                        <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <form class="forgot-password-form" method="POST" action="{{ route('password.email') }}">
-
+                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
 
-                        <div class="field is-horizontal">
-                            <div class="field-label">
-                                <label class="label">E-Mail Address</label>
-                            </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="field-body">
-                                <div class="field">
-                                    <p class="control">
-                                        <input class="input" id="email" type="email" name="email"
-                                               value="{{ old('email') }}" required autofocus>
-                                    </p>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                    @if ($errors->has('email'))
-                                        <p class="help is-danger">
-                                            {{ $errors->first('email') }}
-                                        </p>
-                                    @endif
-                                </div>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
-                        <div class="field is-horizontal">
-                            <div class="field-label"></div>
-
-                            <div class="field-body">
-                                <div class="field is-grouped">
-                                    <div class="control">
-                                        <button type="submit" class="button is-primary">Send Password Reset Link
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Send Password Reset Link
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -69,4 +43,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
