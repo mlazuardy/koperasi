@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -20,7 +20,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+
 
     /**
      * Where to redirect users after registration.
@@ -67,5 +67,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    /**
+     * overwwrite registras
+     */
+    public function showRegistrationForm()
+    {
+        return redirect('login');
+    }
+    /**
+     * make register post method to blank
+     */
+    public function register()
+    {
+        
     }
 }
