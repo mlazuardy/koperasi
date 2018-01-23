@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Koperasi</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
 </head>
 <body>
     <div id="app">
@@ -25,6 +25,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="{{url('admin')}}">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{url('costumer')}}" class="nav-link">Daftar Konsumen</a>
       </li>
     </ul>
     

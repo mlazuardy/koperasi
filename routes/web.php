@@ -16,6 +16,7 @@ Auth::routes();
 
 
 Route::get('/','HomeController@index')->name('home')->middleware('auth');
+Route::resource('costumer','CostumerController');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
