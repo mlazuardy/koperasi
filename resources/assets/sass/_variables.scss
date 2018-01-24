@@ -1,12 +1,6 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: "Raleway",sans-serif;
 
-.table > tbody > tr > .no-line{
-border: none;
-}
-@media print{
-    .table>tbody>tr>.no-line {
-        border: none;
-    }
-
+.margin-30{
+    margin-top: 30px;
 }

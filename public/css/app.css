@@ -1,11 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.table > tbody > tr > .no-line {
-  border: none;
-}
-
-@media print {
-  .table > tbody > tr > .no-line {
-    border: none;
-  }
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.margin-30 {
+  margin-top: 30px;
 }
 
 /*!
