@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Loan;
 use App\Costumer;
+use Carbon\Carbon;
 
-class CostumerController extends Controller
+class LoanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,7 @@ class CostumerController extends Controller
      */
     public function index()
     {
-        $costumers = Costumer::all();
-        return view('costumers.index',compact('costumers'));
+        //
     }
 
     /**
@@ -23,9 +24,10 @@ class CostumerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('costumers.create');
+        $costumer = Costumer::where('id',$id)->firstOrFail();
+        return view('loans.create',compact('costumer'));
     }
 
     /**
@@ -34,22 +36,25 @@ class CostumerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $this->validate(request(),[
-            'nama_pemohon' => 'required',
-            'tempat_tanggal_lahir' => 'required',
-            'alamat' => 'required',
-            'desa' => 'required',
-        ]);
-        
-        $costumer = new Costumer;
-        $costumer->nama_pemohon = title_case($request->nama_pemohon);
-        $costumer->tempat_tanggal_lahir = $request->tempat_tanggal_lahir;
-        $costumer->alamat = $request->alamat;
-        $costumer->desa = $request->desa;
-        $costumer->save();
-        return redirect('costumer');
+        $costumer = Costumer::where('id',$id)->firstOrFail();
+        $loan = new Loan;
+        $loan->no_spk = $request->no_spk;
+        $loan->costumer_id = $costumer->id;
+        $loan->pembiayaan = str_replace(',','', $request->pembiayaan);
+        $loan->jangka_waktu = $request->jangka_waktu;
+        $loan->bulan_minggu = $request->bulan_minggu;
+        $loan->tabungan_1x_angsuran = str_replace(',','',$request->tabungan_1x_angsuran);
+        $loan->hari_cair = $request->hari_cair;
+        $loan->tanggal_cair = $request->tanggal_cair;
+        $loan->pokok = str_replace(',','',$request->pokok);
+        $loan->jasa = str_replace(',','',$request->jasa);
+        $loan->total_angsuran  = str_replace(',','',$request->pokok) + str_replace(',','',$request->jasa);
+        $loan->keterangan = $request->keterangan;
+        $loan->save();
+        return redirect('costumer/'.$costumer->id);
+
     }
 
     /**
@@ -60,8 +65,11 @@ class CostumerController extends Controller
      */
     public function show($id)
     {
-        $costumer = Costumer::firstOrFail();
-        return view('costumers.show',compact('costumer'));
+        $loan = Loan::firstOrFail();
+        Carbon::setLocale('id');
+        dd($loan->created_at->diffForHumans());
+       
+        return view('loans.show',compact('loan'));
     }
 
     /**

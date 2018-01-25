@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -24,10 +25,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin')}}">Admin</a>
-      </li>
-      <li class="nav-item">
         <a href="{{url('costumer')}}" class="nav-link">Daftar Konsumen</a>
+      </li>
+       <li class="nav-item">
+        <a href="#" class="nav-link">Daftar Pinjaman</a>
       </li>
     </ul>
     
