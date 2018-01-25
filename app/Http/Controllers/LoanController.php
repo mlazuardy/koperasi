@@ -65,10 +65,7 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        $loan = Loan::firstOrFail();
-        Carbon::setLocale('id');
-        dd($loan->created_at->diffForHumans());
-       
+        $loan = Loan::firstOrFail();   
         return view('loans.show',compact('loan'));
     }
 
