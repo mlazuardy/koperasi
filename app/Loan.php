@@ -27,4 +27,11 @@ class Loan extends Model
     {
         return $this->belongsTo('App\Costumer','costumer_id');
     }
+    /**
+     * loan has many Payment
+     */
+    public function payments()
+    {
+        return $this->hasMany('App\Payment');
+    }
 }

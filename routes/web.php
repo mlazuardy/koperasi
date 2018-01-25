@@ -19,7 +19,8 @@ Route::get('/','HomeController@index')->name('home')->middleware('auth');
 Route::resource('costumer','CostumerController');
 Route::get('costumer/{costumer}/create','LoanController@create');//buat pinjaman baru
 Route::post('costumer/{costumer}/create','LoanController@store');//simpan pinjaman baru
-Route::get('costumer/{costumer}/{Loan}','LoanController@show');
+Route::get('costumer/{costumer}/{loan}','LoanController@show');//tampilkan data pinjaman anggota
+Route::get('costumer/{costumer}/{loan}/create','PaymentController@create');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

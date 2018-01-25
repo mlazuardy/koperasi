@@ -24,9 +24,9 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Costumer $costumer)
     {
-        $costumer = Costumer::where('id',$id)->firstOrFail();
+        Costumer::firstOrFail();
         return view('loans.create',compact('costumer'));
     }
 
@@ -63,9 +63,9 @@ class LoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Costumer $costumer ,Loan $loan)
     {
-        $loan = Loan::firstOrFail();   
+        $loan = Loan::firstOrFail();
         return view('loans.show',compact('loan'));
     }
 

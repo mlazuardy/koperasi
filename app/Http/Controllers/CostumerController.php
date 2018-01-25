@@ -58,7 +58,7 @@ class CostumerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Costumer $costumer)
     {
         $costumer = Costumer::firstOrFail();
         return view('costumers.show',compact('costumer'));
