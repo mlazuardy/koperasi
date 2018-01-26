@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    protected $fillable = ['nominal'];
+    protected $fillable = ['nominal','angsuran_ke'];
     /**
      * payment belongsto Loans
      */

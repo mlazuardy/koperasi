@@ -12,7 +12,7 @@
 <div class="container">
     <h2 class="text-center">Daftar Pinjaman</h2>
   <div class="costumer-button">
-        <a href="#" class="d-inline btn btn-primary">Tambah Pinjaman</a>
+        <a href="{{url()->current().'/create'}}" class="d-inline btn btn-primary">Tambah Pinjaman</a>
         <a href="#" class="d-inline btn btn-info">aa</a>
   </div>
     

@@ -45,6 +45,7 @@ class LoanController extends Controller
         $loan->pembiayaan = str_replace(',','', $request->pembiayaan);
         $loan->jangka_waktu = $request->jangka_waktu;
         $loan->bulan_minggu = $request->bulan_minggu;
+        $loan->sisa_angsuran = $request->jangka_waktu;
         $loan->tabungan_1x_angsuran = str_replace(',','',$request->tabungan_1x_angsuran);
         $loan->hari_cair = $request->hari_cair;
         $loan->tanggal_cair = $request->tanggal_cair;

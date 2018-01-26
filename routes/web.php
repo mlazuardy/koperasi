@@ -21,6 +21,7 @@ Route::get('costumer/{costumer}/create','LoanController@create');//buat pinjaman
 Route::post('costumer/{costumer}/create','LoanController@store');//simpan pinjaman baru
 Route::get('costumer/{costumer}/{loan}','LoanController@show');//tampilkan data pinjaman anggota
 Route::get('costumer/{costumer}/{loan}/create','PaymentController@create');
+Route::post('costumer/{costumer}/{loan}','PaymentController@store');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

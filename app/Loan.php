@@ -17,7 +17,8 @@ class Loan extends Model
         'pokok',
         'jasa',
         'total_angsuran',
-        'keterangan'
+        'keterangan',
+        'sisa_angsuran'
     ];
     
     /**

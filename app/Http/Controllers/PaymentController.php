@@ -23,6 +23,24 @@ class PaymentController extends Controller
     public function create(Costumer $costumer,Loan $loan)
     {
         Loan::firstOrFail();
-        return view('payments.create',compact('loan'));
+        return view('payments.create',compact('loan','costumer'));
+    }
+    /**
+     * simpan angsuran yang dibayar
+     * Illuminate\Http\Request
+     */
+    public function store(Request $request,Costumer $costumer,Loan $loan)
+    {
+        Loan::firstOrFail();
+        $this->validate(request(),[
+            'nominal' => 'required'
+        ]);
+        $payment = new Payment;
+        $payment->loan_id = $loan->id;
+        $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
+        $payment->nominal = $request->nominal;
+        $payment->save();
+        return redirect()->back();
+        
     }
 }
