@@ -37,10 +37,12 @@ class PaymentController extends Controller
         ]);
         $payment = new Payment;
         $payment->loan_id = $loan->id;
-        $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
+        // $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
         $payment->nominal = $request->nominal;
         $payment->save();
-        return redirect()->back();
+        $loan->sisa_angsuran = $loan->sisa_angsuran -1;
+        $loan->save();
+        return redirect("costumer/$costumer->id/$loan->id");
         
     }
 }

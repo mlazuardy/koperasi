@@ -11,8 +11,12 @@
                             <input type="text" name="nama_pemohon" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="tempat_tanggal_lahir">Tempat, Tanggal Lahir</label>
-                            <input type="date" name="tempat_tanggal_lahir" placeholder="Tempat Tanggal Lahir" class="form-control">
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input type="text" name="tempat_lahir" id="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tempat_tanggal_lahir">Tanggal Lahir</label>
+                            <input type="date" name="tanggal_lahir" placeholder="Tempat Tanggal Lahir" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat</label>

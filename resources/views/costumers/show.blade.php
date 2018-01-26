@@ -10,12 +10,13 @@
 
 <section class="loan-list">
 <div class="container">
+    @if(count($costumer->loans))
     <h2 class="text-center">Daftar Pinjaman</h2>
-  <div class="costumer-button">
+  <div class="costumer-button float-left">
         <a href="{{url()->current().'/create'}}" class="d-inline btn btn-primary">Tambah Pinjaman</a>
         <a href="#" class="d-inline btn btn-info">aa</a>
   </div>
-    
+   
     <div class="table-responsive text-center">
         <table class="table-bordered table table-sm">
             <thead>
@@ -52,6 +53,12 @@
             </tbody>
         </table>
     </div>
+    @else
+    <div class="loans-else text-center">
+        <h2>Tidak Ada Pinjaman yang dibuat Anggota ini</h2>
+        <a href="{{url()->current().'/create'}}" class="d-inline btn btn-primary">Tambah Pinjaman</a>
+    </div>
+    @endif
 </div>
 </section>
 

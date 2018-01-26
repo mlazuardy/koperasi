@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Costumer;
+use Alert;
 
 class CostumerController extends Controller
 {
@@ -38,17 +39,20 @@ class CostumerController extends Controller
     {
         $this->validate(request(),[
             'nama_pemohon' => 'required',
-            'tempat_tanggal_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'tempat_lahir'=>'required',
             'alamat' => 'required',
             'desa' => 'required',
         ]);
         
         $costumer = new Costumer;
         $costumer->nama_pemohon = title_case($request->nama_pemohon);
-        $costumer->tempat_tanggal_lahir = $request->tempat_tanggal_lahir;
+        $costumer->tempat_lahir = $request->tempat_lahir;
+        $costumer->tanggal_lahir = $request->tanggal_lahir;
         $costumer->alamat = $request->alamat;
         $costumer->desa = $request->desa;
         $costumer->save();
+        Alert::success('mantap');
         return redirect('costumer');
     }
 
@@ -60,7 +64,7 @@ class CostumerController extends Controller
      */
     public function show(Costumer $costumer)
     {
-        $costumer = Costumer::firstOrFail();
+        Costumer::where('id',$costumer->id)->firstOrFail();
         return view('costumers.show',compact('costumer'));
     }
 

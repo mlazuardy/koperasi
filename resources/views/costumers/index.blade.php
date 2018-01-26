@@ -3,7 +3,7 @@
     <section class="constumer-index margin-30">
         <div class="container">
             <h1 class="text-center">Daftar Konsumen</h1>
-                 <div class="pull-left add-costumer">
+                 <div class="float-left add-costumer">
                     <a href="{{url('costumer/create')}}" class="btn btn-info" >Buat Anggota Baru</a>
                 </div>  
             <div class="table-responsive">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Loan;
 use App\Costumer;
 use Carbon\Carbon;
+use Alert;
 
 class LoanController extends Controller
 {
@@ -26,8 +27,14 @@ class LoanController extends Controller
      */
     public function create(Costumer $costumer)
     {
-        Costumer::firstOrFail();
-        return view('loans.create',compact('costumer'));
+        Costumer::where('id',$costumer->id)->firstOrFail();
+        if(is_null($costumer->no_anggota)){
+            Alert::error('Nama Pemohon Ini Belum Terverifikasi, tidak dapat membuat pinjaman', 'Ooops!')->persistent('Tutup') ;
+            return back();
+        }
+        else{
+            return view('loans.create', compact('costumer'));
+        }
     }
 
     /**
@@ -67,7 +74,8 @@ class LoanController extends Controller
     public function show(Costumer $costumer ,Loan $loan)
     {
         $loan = Loan::firstOrFail();
-        return view('loans.show',compact('loan'));
+        $payments = $loan->payments()->get();
+        return view('loans.show',compact('loan','payments'));
     }
 
     /**
