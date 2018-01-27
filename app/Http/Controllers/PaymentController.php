@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Loan;
 use App\Payment;
 use App\Costumer;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -23,6 +24,9 @@ class PaymentController extends Controller
     public function create(Costumer $costumer,Loan $loan)
     {
         Loan::firstOrFail();
+        if($loan->sisa_angsuran === 0){
+            abort(404);
+        }
         return view('payments.create',compact('loan','costumer'));
     }
     /**
@@ -32,13 +36,10 @@ class PaymentController extends Controller
     public function store(Request $request,Costumer $costumer,Loan $loan)
     {
         Loan::firstOrFail();
-        $this->validate(request(),[
-            'nominal' => 'required'
-        ]);
         $payment = new Payment;
         $payment->loan_id = $loan->id;
         // $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
-        $payment->nominal = $request->nominal;
+        $payment->nominal = $loan->total_angsuran;
         $payment->save();
         $loan->sisa_angsuran = $loan->sisa_angsuran -1;
         $loan->save();

@@ -10,6 +10,15 @@
   margin-bottom: 20px;
 }
 
+.loan-show {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.loan-show .card {
+  margin-top: 20px;
+}
+
 /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors

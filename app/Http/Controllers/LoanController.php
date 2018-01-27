@@ -7,6 +7,7 @@ use App\Loan;
 use App\Costumer;
 use Carbon\Carbon;
 use Alert;
+use DB;
 
 class LoanController extends Controller
 {
@@ -74,6 +75,7 @@ class LoanController extends Controller
     public function show(Costumer $costumer ,Loan $loan)
     {
         $loan = Loan::firstOrFail();
+        Carbon::setLocale('id');
         $payments = $loan->payments()->get();
         return view('loans.show',compact('loan','payments'));
     }

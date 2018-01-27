@@ -14,7 +14,6 @@
     <h2 class="text-center">Daftar Pinjaman</h2>
   <div class="costumer-button float-left">
         <a href="{{url()->current().'/create'}}" class="d-inline btn btn-primary">Tambah Pinjaman</a>
-        <a href="#" class="d-inline btn btn-info">aa</a>
   </div>
    
     <div class="table-responsive text-center">
@@ -32,6 +31,7 @@
                     <th>Jasa</th>
                     <th>Total Angsuran</th>
                     <th>Keterangan</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +48,9 @@
                         <td>Rp. {{number_format($loan->jasa)}}</td>
                         <td>Rp. {{number_format($loan->total_angsuran)}}</td>
                         <td>{{$loan->keterangan ? $loan->keterangan :'-'}}</td>
+                        <td>
+                            <a href="{{url('costumer/'.$costumer->id.'/'.$loan->id)}}" class="btn btn-info">Lihat</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
