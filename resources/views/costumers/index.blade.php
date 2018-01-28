@@ -32,7 +32,7 @@
                             <a href="{{url('costumer/'.$costumer->id)}}" class="btn btn-primary">Lihat</a>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-info">Edit</a>
+                            <a href="{{url('costumer/'.$costumer->id.'/edit')}}" class="btn btn-info">Edit</a>
                         </td>
                         <td>
                             <a href="#" class="btn btn-danger">Hapus</a>

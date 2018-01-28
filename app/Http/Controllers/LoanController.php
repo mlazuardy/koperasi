@@ -18,7 +18,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans = Loan::latest()->paginate(20);
+        return view('loans.index',compact('loans'));
     }
 
     /**
@@ -74,7 +75,7 @@ class LoanController extends Controller
      */
     public function show(Costumer $costumer ,Loan $loan)
     {
-        $loan = Loan::firstOrFail();
+        $loan = Loan::where('id',$loan->id)->firstOrFail();
         Carbon::setLocale('id');
         $payments = $loan->payments()->get();
         return view('loans.show',compact('loan','payments'));

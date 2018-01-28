@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Costumer;
+use App\Loan;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $loans = Loan::get();
+        $costumers = Costumer::get();
+        return view('home',compact('costumers','loans'));
     }
 }

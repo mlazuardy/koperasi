@@ -15,7 +15,7 @@ class PaymentController extends Controller
      */
     public function show($id)
     {
-        $payment = Payment::firstOrFail();
+        $payment = Payment::where('id',$id)->firstOrFail();
         return view('payments.show',compact('payment'));
     }
     /**

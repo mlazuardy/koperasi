@@ -26,10 +26,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a href="{{url('costumer')}}" class="nav-link">Daftar Anggota</a>
+        <a href="{{url('costumer')}}" class="nav-link {{Request::is('costumer') ? 'active' :''}} ">Daftar Anggota</a>
       </li>
        <li class="nav-item">
-        <a href="#" class="nav-link">Daftar Pinjaman</a>
+        <a href="{{url('loan')}}" class="nav-link {{Request::is('loan') ?'active':''}}">Daftar Pinjaman</a>
       </li>
     </ul>
     

@@ -14,6 +14,8 @@
 
 Auth::routes();
 
+//Tampilkan seluruh pinjaman
+Route::get('loan','LoanController@index');
 
 Route::get('/','HomeController@index')->name('home')->middleware('auth');
 Route::resource('costumer','CostumerController');
