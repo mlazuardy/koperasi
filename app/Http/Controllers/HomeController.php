@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Costumer;
 use App\Loan;
+use App\Payment;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $payments = Payment::get();
         $loans = Loan::get();
         $costumers = Costumer::get();
-        return view('home',compact('costumers','loans'));
+        return view('home',compact('costumers','loans','payments'));
     }
 }

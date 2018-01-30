@@ -32,6 +32,7 @@
                     <p>Telah Dikeluarkan</p>
                     <a href="{{url('loan')}}" class="btn btn-primary">Lihat Daftar Pinjaman</a>
                 </div>
+               
             </div>
         </div>
     </div>

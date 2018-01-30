@@ -114,4 +114,12 @@ class LoanController extends Controller
     {
         //
     }
+    /**
+     * print struk
+     */
+    public function loanPrint(Costumer $costumer,Loan $loan)
+    {
+        Loan::where('id',$loan->id)->firstOrFail();
+        return view('loans.print',compact('loan'));
+    }
 }

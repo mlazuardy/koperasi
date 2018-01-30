@@ -27,7 +27,7 @@
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item">Nominal : Rp. {{number_format($payment->nominal)}}</li>
                         <li class="list-group-item">Tanggal Dibayar : {{$payment->created_at->format('m d Y')}}</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-success" >Buat Struk Angsuran Ini</a></li>
+                        <li class="list-group-item"><a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id)}}" class="btn btn-success" >Buat Struk Angsuran Ini</a></li>
                       </ul> 
                   </div>
               </div>

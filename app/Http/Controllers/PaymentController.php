@@ -13,9 +13,9 @@ class PaymentController extends Controller
     /**
      * tampilkan total angsuran yang sudah dibayar
      */
-    public function show($id)
+    public function show(Costumer $costumer,Loan $loan ,Payment $payment)
     {
-        $payment = Payment::where('id',$id)->firstOrFail();
+        $payment = Payment::where('id',$payment->id)->firstOrFail();
         return view('payments.show',compact('payment'));
     }
     /**
@@ -40,10 +40,16 @@ class PaymentController extends Controller
         $payment->loan_id = $loan->id;
         // $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
         $payment->nominal = $loan->total_angsuran;
+        $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
         $payment->save();
         $loan->sisa_angsuran = $loan->sisa_angsuran -1;
         $loan->save();
         return redirect("costumer/$costumer->id/$loan->id");
         
+    }
+    public function paymentPrint(Costumer $costumer,Loan $loan ,Payment $payment)
+    {
+        Payment::where('id',$payment->id)->firstOrFail();
+        return view('payments.print',compact('payment'));
     }
 }

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Koperasi</title>
+    <title>KBUM TENJOLAYA</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
@@ -18,7 +18,7 @@
 <body>
     <div id="app">
        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Koperasi</a>
+  <a class="navbar-brand" href="/">KBUM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -35,7 +35,7 @@
     
    <ul class="navbar-nav navbar-right">
       <li class="nav-item">
-        <a href="#" class="nav-link">My Profile</a>
+        <a href="#" class="nav-link">{{Auth::user()->name}}</a>
       </li>
       <li class="nav-item">
         <a href="{{route('logout')}}"

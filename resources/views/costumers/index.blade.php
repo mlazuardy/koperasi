@@ -20,12 +20,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($costumers as $costumer)
+                    @foreach ($costumers as $key => $costumer)
                     <tr class="text-center">
-                        <td>{{$costumer->id}}</td>
+                        <td>{{$key+1}}</td>
                         <td>{{$costumer->no_anggota ? $costumer->no_anggota : 'Belum Terverifikasi'}}</td>
                         <td>{{$costumer->nama_pemohon}}</td>
-                        <td>{{$costumer->tempat_lahir}}, {{$costumer->tanggal_lahir}}</td>
+                        <td>{{$costumer->tempat_lahir}}, {{date('d-M-Y',strtotime($costumer->tanggal_lahir))}}</td>
                         <td>{{$costumer->alamat}}</td>
                         <td>{{$costumer->desa}}</td>
                         <td>
@@ -34,9 +34,7 @@
                         <td>
                             <a href="{{url('costumer/'.$costumer->id.'/edit')}}" class="btn btn-info">Edit</a>
                         </td>
-                        <td>
-                            <a href="#" class="btn btn-danger">Hapus</a>
-                        </td>
+                    
                     @endforeach
                     </tr>
                     
