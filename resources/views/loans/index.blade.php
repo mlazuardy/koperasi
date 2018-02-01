@@ -36,7 +36,9 @@
                                 <td>Rp. {{number_format($loan->jasa)}}</td>
                                 <td>Rp. {{number_format($loan->total_angsuran)}}</td>
                                 <td>{{$loan->keterangan ? $loan->keterangan : '-'}}</td>
-                                <td>A</td>
+                                <td>
+                                    <a href="{{url('costumer/'.$loan->costumer->id.'/'.$loan->id)}}" class="btn btn-primary">Lihat</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
