@@ -71,7 +71,7 @@
                 <br>
                 <div class="float-right">{{Auth::user()->name}}</div>        
             </div>
-            <input id="printpagebutton" type="button" value="Print" class="btn btn-primary" onclick="printpage()"/>
+            <input id="printpagebutton" type="button" value="Print" class="btn btn-primary" onclick="sendToQuickPrinterChrome();"/>
         </div>
         
     </section>
@@ -90,5 +90,29 @@
         //[Delete this line if you want it to stay hidden after printing]
         printButton.style.visibility = 'visible';
     }
+</script>
+<script>
+function sendToQuickPrinterChrome(){
+   var commandsToPrint =
+                        "<BIG><BOLD><CENTER> KOPERASI <BR>\n" +
+                        "<CENTER>BINA UMMAT MANDIRI\n"+
+                        "<CENTER>KEC. TENJOLAYA, KAB. BOGOR <BR>\n" +
+                        "<BOLD>No SPK   : {{$payment->loan->no_spk}}\n" +
+                        "<LEFT>Nama     : {{$payment->loan->costumer->nama_pemohon}}\n" +
+                        "<LEFT>Pokok    : Rp. {{number_format($payment->loan->pokok)}}\n"+
+                        "<LEFT>Angs ke  : {{$payment->angsuran_ke}}\n"+
+                        "<LEFT>Jasa     : Rp. {{number_format($payment->loan->jasa)}}<BR>\n" +
+                        "<LINE>"+
+                        "<RIGHT><BOLD>Total : Rp. {{number_format($payment->loan->pokok + $payment->loan->jasa)}}<BR>" +
+                        "<LINE>"+
+                        "<RIGHT>Penyetor<BR>\n" +
+                        "<BR>\n"+
+                        "<RIGHT>{{Auth::user()->name}}\n"+
+                        "<BR>\n" +
+                        "<CUT>\n"
+                ;
+    var textEncoded = encodeURI(commandsToPrint);
+    window.location.href="intent://"+textEncoded+"#Intent;scheme=quickprinter;package=pe.diegoveloper.printerserverapp;end;";
+}
 </script>
 @endsection
