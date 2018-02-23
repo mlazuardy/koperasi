@@ -9,10 +9,12 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-dompdf": "^0.8.1",
         "fideloper/proxy": "~3.3",
         "laravel-frontend-presets/bulma": "^1.7",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "mike42/escpos-php": "^1.6",
         "tcg/voyager": "^1.0",
         "uxweb/sweet-alert": "^1.4"
     },

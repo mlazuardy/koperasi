@@ -39,7 +39,8 @@ class PaymentController extends Controller
         $payment = new Payment;
         $payment->loan_id = $loan->id;
         // $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
-        $payment->nominal = $loan->total_angsuran;
+        $payment->jasa = $loan->pembiayaan * ($request->jasa / "100");
+        $payment->nominal = $loan->total_angsuran + $payment->jasa;
         $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
         $payment->save();
         $loan->sisa_angsuran = $loan->sisa_angsuran -1;

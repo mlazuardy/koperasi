@@ -54,11 +54,11 @@
                         </tr>
                         <tr>
                             <td>JASA</td>
-                            <td class="text-right">Rp {{number_format($payment->loan->jasa)}}</td>
+                            <td class="text-right">Rp {{number_format($payment->jasa)}}</td>
                         </tr>
                         <tr>
                             <td><b>JUMLAH</b></td>
-                            <td class="text-right">Rp {{number_format($payment->loan->pokok + $payment->loan->jasa)}}</td>
+                            <td class="text-right">Rp {{number_format($payment->loan->pokok + $payment->jasa)}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -94,20 +94,29 @@
 <script>
 function sendToQuickPrinterChrome(){
    var commandsToPrint =
-                        "<BIG><BOLD><CENTER> KOPERASI <BR>\n" +
-                        "<CENTER>BINA UMMAT MANDIRI\n"+
-                        "<CENTER>KEC. TENJOLAYA, KAB. BOGOR <BR>\n" +
+                        "<BOLD><CENTER>KOPERASI BINA UMMAT MANDIRI\n" +
+                        "<CENTER>TENJOLAYA\n"+
+                        "<CENTER>KP. Tapos Lebak Desa Tapos II<BR>" +
+                        "<LINE>" +
+                        "<CENTER>Struk Angsuran Koperasi <BR>\n" +
                         "<BOLD>No SPK   : {{$payment->loan->no_spk}}\n" +
                         "<LEFT>Nama     : {{$payment->loan->costumer->nama_pemohon}}\n" +
                         "<LEFT>Pokok    : Rp. {{number_format($payment->loan->pokok)}}\n"+
                         "<LEFT>Angs ke  : {{$payment->angsuran_ke}}\n"+
-                        "<LEFT>Jasa     : Rp. {{number_format($payment->loan->jasa)}}<BR>\n" +
+                        "<LEFT>Jasa     : Rp. {{number_format($payment->jasa)}}<BR>\n" +
                         "<LINE>"+
-                        "<RIGHT><BOLD>Total : Rp. {{number_format($payment->loan->pokok + $payment->loan->jasa)}}<BR>" +
+                        "<RIGHT><BOLD>Total : Rp. {{number_format($payment->nominal)}}<BR>" +
                         "<LINE>"+
-                        "<RIGHT>Penyetor<BR>\n" +
+                        "<BOLD>Struk Ini Adalah Bukti Sah Yang\n" +
+                        "<BOLD><CENTER>Dikeluarkan Oleh Pihak KBUMT\n" +
+                        "<CENTER>Terima Kasih<BR>\n" +
+                        "<RIGHT>Kolektor<BR>\n" +
+                        "<BR>\n" +
                         "<BR>\n"+
                         "<RIGHT>{{Auth::user()->name}}\n"+
+                        "<LINE>" +
+                        "<CENTER>{{Carbon\Carbon::now(new DateTimeZone('Asia/Jakarta'))->format('d-m-Y H:i:s')}}\n"+
+                        "<LINE>\n" +
                         "<BR>\n" +
                         "<CUT>\n"
                 ;

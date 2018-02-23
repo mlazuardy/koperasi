@@ -28,7 +28,6 @@
                     <th>Hari Cair</th>
                     <th>Tanggal Cair</th>
                     <th>Pokok</th>
-                    <th>Jasa</th>
                     <th>Total Angsuran</th>
                     <th>Keterangan</th>
                     <th>Detail</th>
@@ -45,7 +44,6 @@
                         <td>{{$loan->hari_cair}}</td>
                         <td>{{$loan->tanggal_cair}}</td>
                         <td>Rp. {{number_format($loan->pokok)}}</td>
-                        <td>Rp. {{number_format($loan->jasa)}}</td>
                         <td>Rp. {{number_format($loan->total_angsuran)}}</td>
                         <td>{{$loan->keterangan ? $loan->keterangan :'-'}}</td>
                         <td>

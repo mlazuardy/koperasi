@@ -55,16 +55,15 @@ class LoanController extends Controller
         $loan->jangka_waktu = $request->jangka_waktu;
         $loan->bulan_minggu = $request->bulan_minggu;
         $loan->sisa_angsuran = $request->jangka_waktu;
-        $loan->tabungan_1x_angsuran = str_replace(',','',$request->tabungan_1x_angsuran);
+        $loan->tabungan_1x_angsuran = str_replace(',','',$request->pembiayaan) / $request->jangka_waktu;
         $loan->hari_cair = $request->hari_cair;
         $loan->tanggal_cair = $request->tanggal_cair;
-        $loan->pokok = str_replace(',','',$request->pokok);
-        $loan->jasa = str_replace(',','',$request->jasa);
-        $loan->total_angsuran  = str_replace(',','',$request->pokok) + str_replace(',','',$request->jasa);
+        $loan->pokok = $loan->pembiayaan / $loan->jangka_waktu;
+        $loan->total_angsuran  = ($loan->pokok) + ($loan->jasa);
         $loan->keterangan = $request->keterangan;
+      
         $loan->save();
         return redirect('costumer/'.$costumer->id);
-
     }
 
     /**

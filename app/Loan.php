@@ -15,7 +15,6 @@ class Loan extends Model
         'hari_cair',
         'tanggal_cair',
         'pokok',
-        'jasa',
         'total_angsuran',
         'keterangan',
         'sisa_angsuran'

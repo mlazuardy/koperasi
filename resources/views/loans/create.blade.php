@@ -35,39 +35,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="tabungan_1x_angsuran">Tabungan 1x Angsuran</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" name="tabungan_1x_angsuran" id="amount" class="form-control"required>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="hari_cair">Hari Cair</label>
                             <input type="text" name="hari_cair" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="tanggal_cair">Tanggal Cair</label>
                             <input type="date" name="tanggal_cair" class="form-control"required  required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pokok">Pokok</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" id="amount" name="pokok" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="jasa">Jasa</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Rp</span>
-                                </div>
-                                <input type="text" id="amount" placeholder="masukan 0 ( nol ) jika tidak ada" name="jasa" class="form-control">
-                            </div>
                         </div>
                         <div class="form-group">
                             <label for="keterangan">Keterangan</label>
