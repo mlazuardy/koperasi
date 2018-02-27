@@ -117,7 +117,6 @@ function sendToQuickPrinterChrome(){
                         "<LINE>" +
                         "<CENTER>{{Carbon\Carbon::now(new DateTimeZone('Asia/Jakarta'))->format('d-m-Y H:i:s')}}\n"+
                         "<LINE>\n" +
-                        "<BR>\n" +
                         "<CUT>\n"
                 ;
     var textEncoded = encodeURI(commandsToPrint);

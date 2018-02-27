@@ -35,7 +35,7 @@
     
    <ul class="navbar-nav navbar-right">
       <li class="nav-item">
-        <a href="#" class="nav-link">{{Auth::user()->name}}</a>
+      <a href="{{url('users')}}" class="nav-link">{{Auth::user()->name}}</a>
       </li>
       <li class="nav-item">
         <a href="{{route('logout')}}"
