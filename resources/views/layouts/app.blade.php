@@ -38,7 +38,7 @@
       <a href="{{url('users')}}" class="nav-link">{{Auth::user()->name}}</a>
       </li>
       <li class="nav-item">
-        <a href="{{route('logout')}}"
+        <a class="btn btn-danger btn-outline-light" href="{{route('logout')}}"
                             onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();"
         class="nav-link">Logout</a>

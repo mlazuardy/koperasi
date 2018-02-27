@@ -4,12 +4,13 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-md-8">
-                    <form action="{{url('costumer/'.$costumer->id.'/'.$loan->id)}}" method="post">
+                    <form action="{{url('costumer/'.$costumer->id.'/'.$loan->id.'/'.$payment->id)}}" method="post">
                         {{csrf_field()}}
+                        {{method_field('PATCH')}}
                         <div class="form-group">
-                            <label for="pokok">Pokok</label>
-                            <small class="form-text">
-                                Pokok yang Harus dibayar Rp. {{number_format($loan->total_angsuran)}}
+                            <label for="pokok">Nominal</label>
+                            <small class="form-text">Sisa Setoran Nasabah ini sebesar Rp. {{number_format($loan->total_angsuran - $payment->nominal)}}
+                                <span class="text-danger">(Jangan Sampai salah Input)</span>
                             </small>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

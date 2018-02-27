@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('costumer/{costumer}/{loan}/create', 'PaymentController@create');
     Route::get('costumer/{costumer}/{loan}/{payment}', 'PaymentController@show');
     Route::post('costumer/{costumer}/{loan}', 'PaymentController@store');
+    Route::get('costumer/{costumer}/{loan}/{payment}/edit','PaymentController@edit');
+    Route::patch('costumer/{costumer}/{loan}/{payment}','PaymentController@update');
 });
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

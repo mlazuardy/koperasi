@@ -50,7 +50,7 @@
                     <tbody>
                         <tr>
                             <td>POKOK</td>
-                            <td class="text-right">Rp {{number_format($payment->loan->pokok)}}</td>
+                            <td class="text-right">Rp {{number_format($payment->nominal)}}</td>
                         </tr>
                         <tr>
                             <td>JASA</td>
@@ -58,7 +58,7 @@
                         </tr>
                         <tr>
                             <td><b>JUMLAH</b></td>
-                            <td class="text-right">Rp {{number_format($payment->loan->pokok + $payment->jasa)}}</td>
+                            <td class="text-right">Rp {{number_format($payment->nominal + $payment->jasa)}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -101,7 +101,7 @@ function sendToQuickPrinterChrome(){
                         "<CENTER>Struk Angsuran Koperasi <BR>\n" +
                         "<BOLD>No SPK   : {{$payment->loan->no_spk}}\n" +
                         "<LEFT>Nama     : {{$payment->loan->costumer->nama_pemohon}}\n" +
-                        "<LEFT>Pokok    : Rp. {{number_format($payment->loan->pokok)}}\n"+
+                        "<LEFT>Pokok    : Rp. {{number_format($payment->nominal)}}\n"+
                         "<LEFT>Angs ke  : {{$payment->angsuran_ke}}\n"+
                         "<LEFT>Jasa     : Rp. {{number_format($payment->jasa)}}<BR>\n" +
                         "<LINE>"+

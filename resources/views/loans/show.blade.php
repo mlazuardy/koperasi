@@ -7,7 +7,7 @@
           <p>Total Angsuran = {{$loan->jangka_waktu}}</p>
           <p>Angsuran Dibayar = {{$loan->jangka_waktu - $loan->sisa_angsuran}}</p>
           <p>Sisa Angsuran = {{$loan->sisa_angsuran > 0 ? $loan->sisa_angsuran : 'Lunas' }}</p>
-          @if($loan->sisa_angsuran > 0)
+          @if(count($loan->sisa_angsuran > 0))
           <div class="loan-create">
               <a href="{{url()->current().'/create'}}" class="btn btn-primary">Tambah Angsuran</a>
           </div>
@@ -20,13 +20,25 @@
               @foreach ($payments as $key => $payment)
               <div class="col-md-6">
                   <div class="card border-primary">
-                      <div class="card-header bg-primary  mb-3 text-white">
+                      <div class="card-header {{$payment->nominal === ($loan->total_angsuran)? 'bg-primary' :'bg-danger'}} mb-3 text-white">
                           # Anguran ke {{$key+1}} 
-                      </div>              
+                      </div>
+                      @if ($payment->nominal !== ($loan->total_angsuran))
+                      <div class="card-body text-center text-danger">
+                          <div class="alert alert-danger">Sepertinya Jumlah Pokok yang dibayar Nasabah Anda, 
+                              tidak sesuai dengan Jumlah angsuran yang diharuskan, anda tidak dapat melakukan penambahan Angsuran jika nasabah ini belum membayarkan Pokok yang semestinya di Angsuran ini
+                          </div>
+                      </div>
+                      @endif              
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nominal : Rp. {{number_format($payment->nominal)}}</li>
+                        <li class="list-group-item">Nominal : Rp. {{number_format($payment->nominal + $payment->jasa)}}</li>
                         <li class="list-group-item">Tanggal Dibayar : {{$payment->created_at->format('m d Y')}}</li>
-                        <li class="list-group-item"><a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id)}}" class="btn btn-success" >Buat Struk Angsuran Ini</a></li>
+                        <li class="list-group-item">
+                            <a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id)}}" class="btn btn-success" >Buat Struk Angsuran Ini</a>
+                            @if ($payment->nominal !== ($loan->total_angsuran))
+                            <a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id.'/edit')}}" class="btn btn-info" >Edit Angsuran</a>
+                            @endif
+                        </li>
                       </ul> 
                   </div>
               </div>
