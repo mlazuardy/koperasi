@@ -40,7 +40,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp</span>
                                 </div>
-                                <input type="text" name="tabungan" id="amount" class="form-control">
+                                <input type="text" name="tabungan" value="0" id="amount" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
