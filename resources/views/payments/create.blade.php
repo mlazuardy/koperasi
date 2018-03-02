@@ -29,6 +29,20 @@
                                 </div>
                             </div>
                         </div>
+                        <h3 class="text-center">Tabungan</h3>
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" name="nama" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tabungan">Jumlah Tabungan</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="text" name="tabungan" id="amount" class="form-control">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

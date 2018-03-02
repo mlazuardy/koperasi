@@ -73,24 +73,10 @@
             </div>
             <input id="printpagebutton" type="button" value="Print" class="btn btn-primary" onclick="sendToQuickPrinterChrome();"/>
         </div>
-        
     </section>
     <br>
 @endsection
 @section('js')
-    <script type="text/javascript">
-    function printpage() {
-        //Get the print button and put it into a variable
-        var printButton = document.getElementById("printpagebutton");
-        //Set the print button visibility to 'hidden' 
-        printButton.style.visibility = 'hidden';
-        //Print the page content
-        window.print()
-        //Set the print button to 'visible' again 
-        //[Delete this line if you want it to stay hidden after printing]
-        printButton.style.visibility = 'visible';
-    }
-</script>
 <script>
 function sendToQuickPrinterChrome(){
    var commandsToPrint =
@@ -110,13 +96,15 @@ function sendToQuickPrinterChrome(){
                         "<BOLD>Struk Ini Adalah Bukti Sah Yang\n" +
                         "<BOLD><CENTER>Dikeluarkan Oleh Pihak KBUMT\n" +
                         "<CENTER>Terima Kasih<BR>\n" +
-                        "<RIGHT>Kolektor<BR>\n" +
+                        "Penyetor                Kolektor<BR>\n" +
                         "<BR>\n" +
-                        "<BR>\n"+
                         "<RIGHT>{{Auth::user()->name}}\n"+
                         "<LINE>" +
                         "<CENTER>{{Carbon\Carbon::now(new DateTimeZone('Asia/Jakarta'))->format('d-m-Y H:i:s')}}\n"+
-                        "<LINE>\n" +
+                        "<LINE>" +
+                        "<CENTER>Tabungan<BR>\n" +
+                        "<LEFT>Nama     : {{$payment->nama ? $payment->nama : '-'}}<BR>\n" +
+                        "<LEFT>Nominal  : Rp. {{number_format($payment->tabungan)}}\n" +
                         "<CUT>\n"
                 ;
     var textEncoded = encodeURI(commandsToPrint);

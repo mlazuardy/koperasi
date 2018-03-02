@@ -51,6 +51,8 @@ class PaymentController extends Controller
         if($request->has('jasa')){
             $payment->jasa = $request->jasa;
         }
+        $payment->nama = $request->nama;
+        $payment->tabungan = str_replace(',','', $request->tabungan);
         $payment->save();
         $loan->sisa_angsuran = $loan->sisa_angsuran -1;
         $loan->save();

@@ -37,7 +37,7 @@
                         <li class="list-group-item">Tanggal Dibayar : {{$payment->created_at->format('d M Y')}}</li>
                         <li class="list-group-item">
                             <a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id)}}" class="btn btn-success" >Buat Struk Angsuran Ini</a>
-                            @if ($payment->nominal !== ($loan->total_angsuran))
+                            @if ($payment->nominal + $payment->jasa !== ($loan->total_angsuran))
                             <a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id.'/edit')}}" class="btn btn-info" >Edit Angsuran</a>
                             @endif
                         </li>
