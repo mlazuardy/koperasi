@@ -7,9 +7,10 @@
                     <form action="{{url('costumer/'.$costumer->id.'/'.$loan->id.'/'.$payment->id)}}" method="post">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
+                        @if ($payment->nominal !== $payment->loan->pokok)
                         <div class="form-group">
                             <label for="pokok">Nominal</label>
-                            <small class="form-text">Sisa Setoran Nasabah ini sebesar Rp. {{number_format($loan->total_angsuran - $payment->nominal)}}
+                            <small class="form-text">Sisa Setoran Nasabah ini sebesar Rp. {{number_format($loan->pokok - $payment->nominal)}}
                                 <span class="text-danger">(Jangan Sampai salah Input)</span>
                             </small>
                             <div class="input-group mb-3">
@@ -18,12 +19,18 @@
                                 </div>
                                 <input type="text" id="amount" name="nominal" class="form-control" >
                             </div>
-                            <div class="form-group">
-                                <label for="jasa">Jasa</label>
-                                <input type="text" name="jasa" id="" class="form-control">
-                                <small class="form-text">Masukan Jumlah Jasa ( gunakan titik untuk memisahkan angka koma ) Contoh : ( 1.7 ) tanpa %</small>
-                            </div>
                         </div>
+                        @endif
+                           @if ($payment->jasa === 0)
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" name="jasa" type="checkbox" value="{{$loan->jasa}}">
+                                        Ceklis Jika Nasabah Membayar Jasa juga, Jasa sebesar Rp. {{number_format($loan->jasa)}}
+                                    </label>
+                                </div>
+                            </div>
+                            @endif
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

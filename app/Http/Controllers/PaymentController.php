@@ -24,11 +24,14 @@ class PaymentController extends Controller
      */
     public function create(Costumer $costumer,Loan $loan)
     {
+        $this->validate(request(),[
+            'nominal' => "nullable"
+        ]);
         Loan::firstOrFail();
         if($loan->sisa_angsuran === 0){
             abort(404);
         }
-        if(count($loan->payments) && $loan->payments->last()->nominal !== $loan->total_angsuran ){
+        if(count($loan->payments) && $loan->payments->last()->nominal !== $loan->pokok){
             Alert::error('Pokok Nasabah Anda tidak sesuai dengan Angsuran yang dibayar di angsuran ke '.$loan->payments->last()->angsuran_ke.' ,Harap Cek Angsuran dibawah','Opps')->persistent('close');
             return back();
         }
@@ -43,10 +46,11 @@ class PaymentController extends Controller
         Loan::firstOrFail();
         $payment = new Payment;
         $payment->loan_id = $loan->id;
-        // $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
-        $payment->jasa = $loan->pembiayaan * ($request->jasa / "100");
-        $payment->nominal = str_replace(',','', $request->nominal) + $payment->jasa;
+        $payment->nominal = str_replace(',','', $request->nominal);
         $payment->angsuran_ke = $loan->jangka_waktu - $loan->sisa_angsuran + 1;
+        if($request->has('jasa')){
+            $payment->jasa = $request->jasa;
+        }
         $payment->save();
         $loan->sisa_angsuran = $loan->sisa_angsuran -1;
         $loan->save();
@@ -71,12 +75,13 @@ class PaymentController extends Controller
     {
         $this->validate(request(),[
             'nominal' => 'nullable',
-            'jasa'=> 'nullable'
         ]);
         Payment::findOrFail($payment->id);
-        $payment->nominal = $payment->nominal + str_replace(',','', $request->nominal);
-        if(!is_null($request->jasa)){
-            $payment->jasa = $loan->pembiayaan * ($request->jasa / "100");
+        if($request->has('nominal')){
+            $payment->nominal = $payment->nominal + str_replace(',', '', $request->nominal);
+        }
+        if ($request->has('jasa')) {
+            $payment->jasa = $request->jasa;
         }
         $payment->save();
         return redirect("costumer/$costumer->id/$loan->id/$payment->id");

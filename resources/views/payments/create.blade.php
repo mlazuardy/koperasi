@@ -4,23 +4,29 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-md-8">
+                    <div class="alert alert-warning">
+                        Anda dapat memberi ceklis dan mengisikan jumlah Angsuran yang dibayar nasabah. Namun, Anda juga bisa mengosongkan Salah satunya jika nasabah tidak membayar sesuai angsuran yang ditentukan
+                    </div>
                     <form action="{{url('costumer/'.$costumer->id.'/'.$loan->id)}}" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="pokok">Pokok</label>
                             <small class="form-text">
-                                Pokok yang Harus dibayar Rp. {{number_format($loan->total_angsuran)}}
+                                Pokok yang Harus dibayar Rp. {{number_format($loan->pokok)}}
                             </small>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp</span>
                                 </div>
-                                <input type="text" id="amount" name="nominal" class="form-control" >
+                                <input type="text" id="amount" value="0" name="nominal" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label for="jasa">Jasa</label>
-                                <input type="text" name="jasa" id="" class="form-control">
-                                <small class="form-text">Masukan Jumlah Jasa ( gunakan titik untuk memisahkan angka koma ) Contoh : ( 1.7 ) tanpa %</small>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" name="jasa" type="checkbox" value="{{$loan->jasa}}">
+                                        Ceklis Jika Nasabah Membayar Jasa juga, Jasa sebesar Rp. {{number_format($loan->jasa)}}
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

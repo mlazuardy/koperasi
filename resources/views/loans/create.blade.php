@@ -35,6 +35,11 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="jasa">Jasa</label>
+                            <input type="text" name="jasa" placeholder="contoh (1.7 / satu titik tujuh)" class="form-control">
+                            <small class="form-text">Masukan dengan Titik untuk membagi koma, dan masukan data Tanpa %</small>
+                        </div>
+                        <div class="form-group">
                             <label for="hari_cair">Hari Cair</label>
                             <input type="text" name="hari_cair" class="form-control">
                         </div>

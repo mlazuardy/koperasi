@@ -10,6 +10,7 @@ class Loan extends Model
         'no_spk',
         'pembiayaan',
         'jangka_waktu',
+        'jasa',
         'bulan_minggu',
         'tabungan_1x_angsuran',
         'hari_cair',

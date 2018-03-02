@@ -20,10 +20,10 @@
               @foreach ($payments as $key => $payment)
               <div class="col-md-6">
                   <div class="card border-primary">
-                      <div class="card-header {{$payment->nominal === ($loan->total_angsuran)? 'bg-primary' :'bg-danger'}} mb-3 text-white">
+                      <div class="card-header {{$payment->nominal + $payment->jasa === ($loan->total_angsuran)? 'bg-primary' :'bg-danger'}} mb-3 text-white">
                           # Anguran ke {{$key+1}} 
                       </div>
-                      @if ($payment->nominal !== ($loan->total_angsuran))
+                      @if ($payment->nominal + $payment->jasa !== ($loan->total_angsuran))
                       <div class="card-body text-center text-danger">
                           <div class="alert alert-danger">Sepertinya Jumlah Pokok yang dibayar Nasabah Anda, 
                               tidak sesuai dengan Jumlah angsuran yang diharuskan, anda tidak dapat melakukan penambahan Angsuran jika nasabah ini belum membayarkan Pokok yang semestinya di Angsuran ini
@@ -31,8 +31,10 @@
                       </div>
                       @endif              
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nominal : Rp. {{number_format($payment->nominal + $payment->jasa)}}</li>
-                        <li class="list-group-item">Tanggal Dibayar : {{$payment->created_at->format('m d Y')}}</li>
+                        <li class="list-group-item">Pokok : Rp. {{number_format($payment->nominal)}}</li>
+                        <li class="list-group-item">Jasa : Rp. {{number_format($payment->jasa)}}</li>
+                        <li class="list-group-item">Total : Rp. {{number_format($payment->nominal + $payment->jasa)}}
+                        <li class="list-group-item">Tanggal Dibayar : {{$payment->created_at->format('d M Y')}}</li>
                         <li class="list-group-item">
                             <a href="{{url('costumer/'.$payment->loan->costumer->id.'/'.$payment->loan->id.'/'.$payment->id)}}" class="btn btn-success" >Buat Struk Angsuran Ini</a>
                             @if ($payment->nominal !== ($loan->total_angsuran))

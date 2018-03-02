@@ -59,6 +59,12 @@ class LoanController extends Controller
         $loan->tabungan_1x_angsuran = str_replace(',','',$request->pembiayaan) / $request->jangka_waktu;
         $loan->hari_cair = $request->hari_cair;
         $loan->tanggal_cair = $request->tanggal_cair;
+        if ($request->bulan_minggu === "mingguan"){
+            $loan->jasa = $loan->pembiayaan * ($request->jasa / "100") / 4 ;
+        } else {
+            $loan->jasa = $loan->pembiayaan * ($request->jasa / "100");
+        }
+        
         $loan->pokok = $loan->pembiayaan / $loan->jangka_waktu;
         $loan->total_angsuran  = ($loan->pokok) + ($loan->jasa);
         $loan->keterangan = $request->keterangan;
