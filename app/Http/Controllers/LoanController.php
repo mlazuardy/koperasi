@@ -49,7 +49,7 @@ class LoanController extends Controller
     {
         $costumer = Costumer::where('id',$id)->firstOrFail();
         $loan = new Loan;
-        $loan->no_spk = $request->no_spk;
+        $loan->no_spk = date('dmyHis');
         $loan->user_id = auth()->id();
         $loan->costumer_id = $costumer->id;
         $loan->pembiayaan = str_replace(',','', $request->pembiayaan);

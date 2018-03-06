@@ -7,10 +7,6 @@
                     <form id="form" action="{{url('costumer/'.$costumer->id.'/create')}}" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <label for="no_spk">Nomor SPK</label>
-                            <input type="text" name="no_spk" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label for="pembiayaan">Pembiayaan</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
