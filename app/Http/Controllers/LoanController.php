@@ -49,7 +49,6 @@ class LoanController extends Controller
     {
         $costumer = Costumer::where('id',$id)->firstOrFail();
         $loan = new Loan;
-        $loan->no_spk = date('dmyHis');
         $loan->user_id = auth()->id();
         $loan->costumer_id = $costumer->id;
         $loan->pembiayaan = str_replace(',','', $request->pembiayaan);
@@ -69,6 +68,8 @@ class LoanController extends Controller
         $loan->total_angsuran  = ($loan->pokok) + ($loan->jasa);
         $loan->keterangan = $request->keterangan;
       
+        $loan->save();
+        $loan->no_spk = $loan->id . date('dmy');
         $loan->save();
         return redirect('costumer/'.$costumer->id);
     }
