@@ -9,11 +9,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>KBUM TENJOLAYA</title>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('css/alert.css')}}">
     @yield('css')
+       <script>
+        window.App = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'user' => Auth::user(),
+            'signedIn' => Auth::check()
+        ]) !!};
+    </script>
 </head>
 <body>
     <div id="app">

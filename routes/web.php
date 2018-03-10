@@ -17,6 +17,7 @@ Auth::routes();
 // user Loan
 Route::get('/users','UserController@index');
 //
+Route::resource('blog','BlogController');
 
 Route::group(['middleware' => ['auth']], function () {
     //Tampilkan seluruh pinjaman
