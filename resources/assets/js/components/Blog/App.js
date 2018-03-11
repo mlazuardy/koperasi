@@ -13,7 +13,7 @@ class App extends Component {
             <div className="container">
                 <div className="row">
                     <BlogList deleteBlog={this.props.deleteBlog} blogs={this.props.blogs} />
-                    <NewBlog />
+                    <NewBlog  />
                 </div>
               
             </div>

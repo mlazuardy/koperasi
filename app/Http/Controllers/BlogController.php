@@ -33,6 +33,20 @@ class BlogController extends Controller
         $blog = Blog::where('uuid',$uuid)->first();
         dd($blog);
     }
+    public function edit($uuid)
+    {
+        $blog = Blog::where('uuid',$uuid)->first();
+        return view('blogs.edit',compact('blog'));
+    }
+
+    public function update(Request $request, $uuid)
+    {
+        $blog = Blog::where('uuid',$uuid)->first();
+        $blog->title = $request->get('title');
+        $blog->body = $request->get('body');
+        $blog->save();
+        return response($blog);
+    }
 
     public function destroy($uuid)
     {

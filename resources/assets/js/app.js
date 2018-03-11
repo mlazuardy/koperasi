@@ -14,3 +14,4 @@ require('./bootstrap');
  */
 
 require('./components/Blog/Index');
+require('./components/Example');
