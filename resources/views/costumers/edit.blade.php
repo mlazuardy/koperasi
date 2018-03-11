@@ -16,15 +16,6 @@
                             <input type="text" name="tempat_lahir" value="{{$costumer->tempat_lahir}}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="no_anggota">Nomor Anggota</label>
-                            <input type="text" name="no_anggota" value="{{$costumer->no_anggota}}"  class="form-control">
-                                @if ($errors->has('no_anggota'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('no_anggota') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                        <div class="form-group">
                             <label for="tempat_tanggal_lahir">Tanggal Lahir</label>
                             <input type="date" name="tanggal_lahir" value="{{$costumer->tanggal_lahir}}" placeholder="Tempat Tanggal Lahir" class="form-control">
                         </div>

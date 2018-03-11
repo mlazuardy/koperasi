@@ -91,15 +91,16 @@ class CostumerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate(request(),[
-            'no_anggota' => 'required|unique:costumers'
+            'no_anggota' => 'unique:costumers'
         ]);
         $costumer = Costumer::find($id);
         $costumer->nama_pemohon = $request->nama_pemohon;
         $costumer->tempat_lahir = $request->tempat_lahir;
-        $costumer->no_anggota = $request->no_anggota;
         $costumer->tanggal_lahir = $request->tanggal_lahir;
         $costumer->desa = $request->desa;
         $costumer->alamat = $request->alamat;
+        $costumer->save();
+        $costumer->no_anggota = $costumer->id . date('dmy');
         $costumer->save();
         return redirect('costumer');
     }
