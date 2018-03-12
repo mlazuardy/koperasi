@@ -80,7 +80,7 @@ class PaymentController extends Controller
         ]);
         Payment::findOrFail($payment->id);
         if($request->has('nominal')){
-            $payment->nominal = $payment->nominal + str_replace(',', '', $request->nominal);
+            $payment->nominal = $payment->nominal + (int)str_replace(',', '', $request->nominal);
         }
         if ($request->has('jasa')) {
             $payment->jasa = $request->jasa;

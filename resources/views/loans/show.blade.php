@@ -20,10 +20,10 @@
               @foreach ($payments as $key => $payment)
               <div class="col-md-6">
                   <div class="card border-primary">
-                      <div class="card-header {{$payment->nominal + $payment->jasa === ($loan->total_angsuran)? 'bg-primary' :'bg-danger'}} mb-3 text-white">
+                      <div class="card-header {{$payment->nominal + $payment->jasa == ($loan->total_angsuran)? 'bg-primary' :'bg-danger'}} mb-3 text-white">
                           # Anguran ke {{$key+1}} 
                       </div>
-                      @if ($payment->nominal + $payment->jasa !== ($loan->total_angsuran))
+                      @if ($payment->nominal + $payment->jasa != ($loan->total_angsuran))
                       <div class="card-body text-center text-danger">
                           <div class="alert alert-danger">Sepertinya Jumlah Pokok yang dibayar Nasabah Anda, 
                               tidak sesuai dengan Jumlah angsuran yang diharuskan, anda tidak dapat melakukan penambahan Angsuran jika nasabah ini belum membayarkan Pokok yang semestinya di Angsuran ini

@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         @endif
-                           @if ($payment->jasa === 0)
+                           @if ($payment->jasa == 0)
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="form-check-label">
