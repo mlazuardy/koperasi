@@ -57123,22 +57123,57 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Example = function (_Component) {
     _inherits(Example, _Component);
 
-    function Example() {
+    function Example(props) {
         _classCallCheck(this, Example);
 
-        return _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).call(this, props));
+
+        _this.state = {
+            count: 0
+        };
+        _this.addCount = _this.addCount.bind(_this);
+        _this.substractCount = _this.substractCount.bind(_this);
+        return _this;
     }
 
     _createClass(Example, [{
+        key: 'addCount',
+        value: function addCount() {
+            this.setState({
+                count: this.state.count + 1000
+            });
+        }
+    }, {
+        key: 'substractCount',
+        value: function substractCount() {
+            this.setState({
+                count: this.state.count - 1000
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h1',
-                    null,
-                    'Laravel React Redux : Commit-Cyber'
+                    'div',
+                    { className: 'form-group' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h1',
+                        null,
+                        this.state.count
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { onClick: this.addCount },
+                        '+'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { onClick: this.substractCount },
+                        '-'
+                    )
                 )
             );
         }
