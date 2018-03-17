@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     //
     Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
     Route::resource('costumer', 'CostumerController');
+    Route::post('costumer/search','CostumerController@searchCostumer');
     Route::get('costumer/{costumer}/create', 'LoanController@create');//buat pinjaman baru
     Route::post('costumer/{costumer}/create', 'LoanController@store');//simpan pinjaman baru
     Route::get('costumer/{costumer}/{loan}', 'LoanController@show');//tampilkan data pinjaman anggota

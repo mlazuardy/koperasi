@@ -3,8 +3,15 @@
     <section class="constumer-index margin-30">
         <div class="container">
             <h1 class="text-center">Daftar Konsumen</h1>
-                 <div class="float-left add-costumer">
+                 <div class="add-costumer">
                     <a href="{{url('costumer/create')}}" class="btn btn-info" >Buat Anggota Baru</a>
+                </div>
+                <div class="search-costumer" style="margin-bottom:20px;">
+                   <form class="form-inline" method="post" action="{{url('costumer/search')}}" >
+                    {{csrf_field()}}
+                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
                 </div>  
             <div class="table-responsive">
             <table class="table table-bordered">

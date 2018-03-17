@@ -87,8 +87,8 @@ function sendToQuickPrinterChrome(){
                         "<CENTER>Struk Angsuran Koperasi <BR>\n" +
                         "<BOLD>No SPK   : {{$payment->loan->no_spk}}\n" +
                         "<LEFT>Nama     : {{$payment->loan->costumer->nama_pemohon}}\n" +
-                        "<LEFT>Pokok    : Rp. {{number_format($payment->nominal)}}\n"+
                         "<LEFT>Angs ke  : {{$payment->angsuran_ke}}\n"+
+                        "<LEFT>Pokok    : Rp. {{number_format($payment->nominal)}}\n"+
                         "<LEFT>Jasa     : Rp. {{number_format($payment->jasa)}}<BR>\n" +
                         "<LINE>"+
                         "<RIGHT><BOLD>Total : Rp. {{number_format($payment->nominal)}}<BR>" +
