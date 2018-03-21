@@ -40,6 +40,11 @@
     </ul>
     
    <ul class="navbar-nav navbar-right">
+     @if(Auth::user()->role->name == 'staff')
+     <li class="nav-item">
+       <a href="{{url('staff')}}" class="nav-link">Staff</a>
+     </li>
+     @endif
       <li class="nav-item">
       <a href="{{url('users')}}" class="nav-link">{{Auth::user()->name}}</a>
       </li>

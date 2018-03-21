@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('costumer/{costumer}/{loan}', 'PaymentController@store');
     Route::get('costumer/{costumer}/{loan}/{payment}/edit','PaymentController@edit');
     Route::patch('costumer/{costumer}/{loan}/{payment}','PaymentController@update');
+    //staff
+    Route::get('staff','StaffController@indexToday');
+    Route::get('staff/all','StaffController@index');
+
 });
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

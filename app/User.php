@@ -31,4 +31,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany('App\Blog');
     }
+
+    public function loans()
+    {
+        return $this->hasMany('App\Loan');
+    }
 }

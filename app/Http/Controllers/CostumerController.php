@@ -119,7 +119,7 @@ class CostumerController extends Controller
     public function searchCostumer(Request $request)
     {
         $q = $request->input('search');
-        $costumers = Costumer::where('nama_pemohon','like','%'.$q.'%')
+        $costumers = Costumer::where('no_anggota','like','%'.$q.'%')
                     ->orderBy('nama_pemohon')->get();
         return view('costumers.search',compact('costumers'));
 

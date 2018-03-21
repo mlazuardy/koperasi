@@ -7,7 +7,7 @@
           <p>Total Angsuran = {{$loan->jangka_waktu}}</p>
           <p>Angsuran Dibayar = {{$loan->jangka_waktu - $loan->sisa_angsuran}}</p>
           <p>Sisa Angsuran = {{$loan->sisa_angsuran > 0 ? $loan->sisa_angsuran : 'Lunas' }}</p>
-          @if(count($loan->sisa_angsuran > 0))
+          @if(($loan->sisa_angsuran > 0))
           <div class="loan-create">
               <a href="{{url()->current().'/create'}}" class="btn btn-primary">Tambah Angsuran</a>
           </div>

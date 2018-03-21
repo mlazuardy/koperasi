@@ -35,4 +35,9 @@ class Loan extends Model
     {
         return $this->hasMany('App\Payment');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
 }
