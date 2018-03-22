@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     //staff
     Route::get('staff','StaffController@indexToday');
     Route::get('staff/all','StaffController@index');
+    Route::get('exportToday','StaffController@exportToday')->name('staff.exportToday');
+    Route::get('exportAll','StaffController@exportAll')->name('staff.exportAll');
 
 });
 Route::group(['prefix' => 'admin'], function () {

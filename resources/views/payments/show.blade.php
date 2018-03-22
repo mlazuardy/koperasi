@@ -69,8 +69,11 @@
                 <br>
                 <br>
                 <br>
+                <div class="float-left">{{$payment->loan->costumer->nama_pemohon}}</div>
                 <div class="float-right">{{Auth::user()->name}}</div>        
             </div>
+            <br>
+            <br>
             <input id="printpagebutton" type="button" value="Print" class="btn btn-primary" onclick="sendToQuickPrinterChrome();"/>
         </div>
     </section>
@@ -98,7 +101,7 @@ function sendToQuickPrinterChrome(){
                         "<CENTER>Terima Kasih<BR>\n" +
                         "Penyetor                Kolektor<BR>\n" +
                         "<BR>\n" +
-                        "<RIGHT>{{Auth::user()->name}}\n"+
+                        "{{$payment->loan->costumer->nama_pemohon}}                   {{Auth::user()->name}}\n"+
                         "<LINE>" +
                         "<CENTER>{{Carbon\Carbon::now(new DateTimeZone('Asia/Jakarta'))->format('d-m-Y H:i:s')}}\n"+
                         "<LINE>" +
