@@ -48,8 +48,7 @@ class StaffController extends Controller
     
     public function exportAll()
     {
-        $payments = DB::table('loans')->join('payments','loans.id','=','payments.loan_id')
-        ->get();
+        $payments = Payment::get();
         return Excel::create("data_setoran_semua"."_".date("D_M_Y-H_i_s"),function($excel)use($payments){
             $excel->sheet('mysheet',function($sheet)use($payments){
                 $sheet->fromArray($payments);
