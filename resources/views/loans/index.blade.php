@@ -2,13 +2,13 @@
 @section('content')
     <section class="loan-index margin-30">
         <div class="container">
-                  <div class="search" style="margin-bottom:20px;" >
-            <form class="form-inline" method="post" action="{{url('loan/search')}}">
-                {{csrf_field()}}
-                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+            <div class="search" style="margin-bottom:20px;" >
+                <form class="form-inline" method="post" action="{{url('loan/search')}}">
+                    {{csrf_field()}}
+                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -44,6 +44,9 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="margin-30 d-flex justify-content-center">
+                {{$loans->links('vendor.pagination.bootstrap-4')}}
             </div>
         </div>
     </section>
