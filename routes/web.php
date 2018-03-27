@@ -22,6 +22,7 @@ Route::resource('blog','BlogController');
 Route::group(['middleware' => ['auth']], function () {
     //Tampilkan seluruh pinjaman
     Route::get('loan', 'LoanController@index');
+    Route::post('loan/search','LoanController@loanSearch');
     //
     Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
     Route::resource('costumer', 'CostumerController');
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('staff/all','StaffController@index');
     Route::get('exportToday','StaffController@exportToday')->name('staff.exportToday');
     Route::get('exportAll','StaffController@exportAll')->name('staff.exportAll');
+    Route::post('import','StaffController@import');
 
 });
 Route::group(['prefix' => 'admin'], function () {

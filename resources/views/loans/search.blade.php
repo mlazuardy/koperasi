@@ -1,14 +1,15 @@
-@extends('layouts.app')
-@section('content')
-    <section class="loan-index margin-30">
-        <div class="container">
-                  <div class="search" style="margin-bottom:20px;" >
+@extends('layouts.app') @section('content')
+<section class="search-costumer margin-30">
+    <div class="container">
+        <div class="search" style="margin-bottom:20px;" >
             <form class="form-inline" method="post" action="{{url('loan/search')}}">
                 {{csrf_field()}}
                 <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
+       <section class="loan-index margin-30">
+        <div class="container">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -47,4 +48,6 @@
             </div>
         </div>
     </section>
+    </div>
+</section>
 @endsection

@@ -55,7 +55,6 @@ class LoanController extends Controller
         $loan->jangka_waktu = $request->jangka_waktu;
         $loan->bulan_minggu = $request->bulan_minggu;
         $loan->sisa_angsuran = $request->jangka_waktu;
-        $loan->tabungan_1x_angsuran = str_replace(',','',$request->pembiayaan) / $request->jangka_waktu;
         $loan->hari_cair = $request->hari_cair;
         $loan->tanggal_cair = $request->tanggal_cair;
         if ($request->bulan_minggu === "mingguan"){
@@ -66,6 +65,7 @@ class LoanController extends Controller
         
         $loan->pokok = $loan->pembiayaan / $loan->jangka_waktu;
         $loan->total_angsuran  = ($loan->pokok) + ($loan->jasa);
+        $loan->tabungan_1x_angsuran = $loan->bulan_minggu == "bulanan" ? $loan->pokok + $loan->jasa : 0; 
         $loan->keterangan = $request->keterangan;
       
         $loan->save();
@@ -128,5 +128,15 @@ class LoanController extends Controller
     {
         Loan::where('id',$loan->id)->firstOrFail();
         return view('loans.print',compact('loan'));
+    }
+    /**
+     * search loan by no_spk
+     */
+    public function loanSearch(Request $request)
+    {
+        $q = $request->input('search');
+        $loans = Loan::where('no_spk', 'like', '%' . $q . '%')
+            ->orderBy('no_spk')->get();
+        return view('loans.search', compact('loans'));
     }
 }

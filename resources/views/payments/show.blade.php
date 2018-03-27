@@ -94,14 +94,14 @@ function sendToQuickPrinterChrome(){
                         "<LEFT>Pokok    : Rp. {{number_format($payment->nominal)}}\n"+
                         "<LEFT>Jasa     : Rp. {{number_format($payment->jasa)}}<BR>\n" +
                         "<LINE>"+
-                        "<RIGHT><BOLD>Total : Rp. {{number_format($payment->nominal)}}<BR>" +
+                        "<RIGHT><BOLD>Total : Rp. {{number_format($payment->nominal + $payment->jasa)}}<BR>" +
                         "<LINE>"+
                         "<BOLD>Struk Ini Adalah Bukti Sah Yang\n" +
                         "<BOLD><CENTER>Dikeluarkan Oleh Pihak KBUMT\n" +
                         "<CENTER>Terima Kasih<BR>\n" +
                         "Penyetor                Kolektor<BR>\n" +
                         "<BR>\n" +
-                        "{{$payment->loan->costumer->nama_pemohon}}                   {{Auth::user()->name}}\n"+
+                        "{{$payment->loan->costumer->nama_pemohon}}           {{Auth::user()->name}}\n"+
                         "<LINE>" +
                         "<CENTER>{{Carbon\Carbon::now(new DateTimeZone('Asia/Jakarta'))->format('d-m-Y H:i:s')}}\n"+
                         "<LINE>" +
