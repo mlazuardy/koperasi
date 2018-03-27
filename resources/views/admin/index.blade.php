@@ -57,8 +57,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="text-center">
-                {{$payments->links()}}
+            <div class="d-flex justify-content-center">
+                {{$payments->links('vendor.pagination.bootstrap-4')}}
             </div>
         </div>
     </section>
