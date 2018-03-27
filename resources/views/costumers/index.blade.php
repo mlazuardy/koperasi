@@ -38,9 +38,11 @@
                         <td>
                             <a href="{{url('costumer/'.$costumer->id)}}" class="btn btn-primary">Lihat</a>
                         </td>
-                        <td>
+                        @if(is_null($costumer->no_anggota))
+                          <td>
                             <a href="{{url('costumer/'.$costumer->id.'/edit')}}" class="btn btn-info">Edit</a>
                         </td>
+                        @endif
                     
                     @endforeach
                     </tr>
